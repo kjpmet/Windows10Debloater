@@ -538,7 +538,6 @@ Function FixWhitelistedApps {
         Get-AppxPackage -allusers Microsoft.Windows.Photos | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"} 
     } 
 }
-
 Function UnpinStart {
     # https://superuser.com/a/1442733
     #Requires -RunAsAdministrator
