@@ -1,3 +1,7 @@
+# Automatically set execution policy: 
+Set-ExecutionPolicy Unrestricted -Force
+# Allows time for the Execution Policy to update.
+Start-Sleep - Seconds 10
 #This function finds any AppX/AppXProvisioned package and uninstalls it, except for Freshpaint, Windows Calculator, Windows Store, and Windows Photos.
 #Also, to note - This does NOT remove essential system services/software/etc such as .NET framework installations, Cortana, Edge, etc.
 
