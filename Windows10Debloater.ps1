@@ -12,27 +12,6 @@ If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
     Exit
 }
 
-# Automatically set execution policy: 
-Set-ExecutionPolicy Unrestricted -Force
-# Allows time for the Execution Policy to update.
-Start-Sleep - Seconds 10
-#This function finds any AppX/AppXProvisioned package and uninstalls it, except for Freshpaint, Windows Calculator, Windows Store, and Windows Photos.
-#Also, to note - This does NOT remove essential system services/software/etc such as .NET framework installations, Cortana, Edge, etc.
-
-#This will self elevate the script so with a UAC prompt since this script needs to be run as an Administrator in order to function properly.
-If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]'Administrator')) {
-    Write-Host "You didn't run this script as an Administrator. This script will self elevate to run as an Administrator and continue."
-    Start-Sleep 1
-    Write-Host "                                               3"
-    Start-Sleep 1
-    Write-Host "                                               2"
-    Start-Sleep 1
-    Write-Host "                                               1"
-    Start-Sleep 1
-    Start-Process powershell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
-    Exit
-}
-
 #no errors throughout
 $ErrorActionPreference = 'silentlycontinue'
 
